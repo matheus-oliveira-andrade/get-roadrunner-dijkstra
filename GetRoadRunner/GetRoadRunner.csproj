@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Controllers\Generate.cs" />
     <Compile Include="Controllers\Solve.cs" />
+    <Compile Include="Controllers\Utils.cs" />
     <Compile Include="Models\Generate\BuildGraph.cs" />
     <Compile Include="Models\Generate\GeneratorBoard.cs" />
     <Compile Include="Models\Generate\Pecas.cs" />

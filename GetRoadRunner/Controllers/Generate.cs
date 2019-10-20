@@ -10,7 +10,7 @@ namespace GetRoadRunner.Controllers
 
         public Generate()
         {
-            generatorBoard = new Models.GeneratorBoard();            
+            generatorBoard = new Models.GeneratorBoard();                        
         }
 
         public Vertice[,] GenerateBoard()
@@ -22,6 +22,11 @@ namespace GetRoadRunner.Controllers
         {
             buildGraph = new Models.BuildGraph(matriz);
 
+            return buildGraph.ToListAdjacency();
+        }
+
+        public List<LinkedList<Vertice>> ToListAdjacency()
+        {
             return buildGraph.ToListAdjacency();
         }
     }

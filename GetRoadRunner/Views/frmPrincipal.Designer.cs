@@ -86,8 +86,11 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersVisible = false;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(187, 72);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(394, 345);
             this.dataGridView1.TabIndex = 1;
             // 
@@ -100,7 +103,7 @@
             this.btnGerar.TabIndex = 2;
             this.btnGerar.Text = "Gerar";
             this.btnGerar.UseVisualStyleBackColor = true;
-            this.btnGerar.Click += new System.EventHandler(this.button1_Click);
+            this.btnGerar.Click += new System.EventHandler(this.btnGerar_Click);
             // 
             // label1
             // 
@@ -111,11 +114,12 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(172, 106);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Papaleguas\r\ne\r\nCoiote";
+            this.label1.Text = "Papaléguas\r\ne\r\nCoiote";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnResolver
             // 
+            this.btnResolver.Enabled = false;
             this.btnResolver.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResolver.Location = new System.Drawing.Point(9, 196);
             this.btnResolver.Name = "btnResolver";
@@ -123,6 +127,7 @@
             this.btnResolver.TabIndex = 2;
             this.btnResolver.Text = "Resolver";
             this.btnResolver.UseVisualStyleBackColor = true;
+            this.btnResolver.Click += new System.EventHandler(this.btnResolver_Click);
             // 
             // btnResetar
             // 
@@ -133,6 +138,7 @@
             this.btnResetar.TabIndex = 2;
             this.btnResetar.Text = "Resetar";
             this.btnResetar.UseVisualStyleBackColor = true;
+            this.btnResetar.Click += new System.EventHandler(this.btnResetar_Click);
             // 
             // label2
             // 
@@ -148,6 +154,8 @@
             // 
             // richTxtBReport
             // 
+            this.richTxtBReport.Enabled = false;
+            this.richTxtBReport.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTxtBReport.Location = new System.Drawing.Point(9, 304);
             this.richTxtBReport.Name = "richTxtBReport";
             this.richTxtBReport.Size = new System.Drawing.Size(172, 113);
@@ -170,7 +178,9 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmPrincipal";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Get RoadRunner";
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
