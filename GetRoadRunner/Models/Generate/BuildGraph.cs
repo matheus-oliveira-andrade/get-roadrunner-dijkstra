@@ -10,12 +10,12 @@ namespace GetRoadRunner.Models
         private int[,] MatrizControl { get; set; }
         private List<LinkedList<Vertice>> AdjacencyList { get; set; }
 
-        public BuildGraph(Vertice[,] matrix)
+        public BuildGraph(Vertice[,] matriz)
         {
-            AdjacencyList = new List<LinkedList<Vertice>>(matrix.GetLength(0) * matrix.GetLength(1));
+            AdjacencyList = new List<LinkedList<Vertice>>(matriz.GetLength(0) * matriz.GetLength(1));
 
-            this.Matrix = matrix;
-            this.MatrizControl = new int[matrix.GetLength(0), matrix.GetLength(1)];
+            this.Matrix = matriz;
+            this.MatrizControl = new int[matriz.GetLength(0), matriz.GetLength(1)];
             construirMatrizValorada();
         }
 

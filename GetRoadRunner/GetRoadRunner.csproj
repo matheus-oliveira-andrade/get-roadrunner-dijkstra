@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Generate.cs" />
+    <Compile Include="Controllers\Solve.cs" />
     <Compile Include="Models\Generate\BuildGraph.cs" />
     <Compile Include="Models\Generate\GeneratorBoard.cs" />
     <Compile Include="Models\Generate\Pecas.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -85,8 +88,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <None Include="Resources\coiote.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\papaleguas.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
