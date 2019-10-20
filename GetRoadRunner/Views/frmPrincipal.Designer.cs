@@ -51,7 +51,7 @@
             this.sobreToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(587, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(580, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -81,6 +81,7 @@
             this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
             this.sobreToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.sobreToolStripMenuItem.Text = "Sobre";
+            this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
@@ -88,8 +89,9 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(187, 72);
+            this.dataGridView1.Location = new System.Drawing.Point(181, 72);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(394, 345);
             this.dataGridView1.TabIndex = 1;
@@ -97,7 +99,7 @@
             // btnGerar
             // 
             this.btnGerar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGerar.Location = new System.Drawing.Point(9, 143);
+            this.btnGerar.Location = new System.Drawing.Point(5, 143);
             this.btnGerar.Name = "btnGerar";
             this.btnGerar.Size = new System.Drawing.Size(172, 49);
             this.btnGerar.TabIndex = 2;
@@ -110,7 +112,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 32);
+            this.label1.Location = new System.Drawing.Point(5, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(172, 106);
             this.label1.TabIndex = 3;
@@ -121,7 +123,7 @@
             // 
             this.btnResolver.Enabled = false;
             this.btnResolver.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResolver.Location = new System.Drawing.Point(9, 196);
+            this.btnResolver.Location = new System.Drawing.Point(5, 196);
             this.btnResolver.Name = "btnResolver";
             this.btnResolver.Size = new System.Drawing.Size(172, 49);
             this.btnResolver.TabIndex = 2;
@@ -132,7 +134,7 @@
             // btnResetar
             // 
             this.btnResetar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetar.Location = new System.Drawing.Point(9, 249);
+            this.btnResetar.Location = new System.Drawing.Point(5, 249);
             this.btnResetar.Name = "btnResetar";
             this.btnResetar.Size = new System.Drawing.Size(172, 49);
             this.btnResetar.TabIndex = 2;
@@ -145,7 +147,7 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(187, 32);
+            this.label2.Location = new System.Drawing.Point(181, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(394, 42);
             this.label2.TabIndex = 3;
@@ -154,10 +156,11 @@
             // 
             // richTxtBReport
             // 
-            this.richTxtBReport.Enabled = false;
+            this.richTxtBReport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTxtBReport.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTxtBReport.Location = new System.Drawing.Point(9, 304);
+            this.richTxtBReport.Location = new System.Drawing.Point(5, 304);
             this.richTxtBReport.Name = "richTxtBReport";
+            this.richTxtBReport.ReadOnly = true;
             this.richTxtBReport.Size = new System.Drawing.Size(172, 113);
             this.richTxtBReport.TabIndex = 4;
             this.richTxtBReport.Text = "";
@@ -166,7 +169,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 424);
+            this.ClientSize = new System.Drawing.Size(580, 423);
             this.Controls.Add(this.richTxtBReport);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -175,7 +178,9 @@
             this.Controls.Add(this.btnGerar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "FrmPrincipal";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

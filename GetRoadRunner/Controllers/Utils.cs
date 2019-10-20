@@ -23,7 +23,7 @@ namespace GetRoadRunner.Controllers
             for (int coluna = 0; coluna < numColunas; coluna++)
             {
                 dataGridView.Columns.Add($"col{coluna}", (coluna  + 1).ToString());
-                dataGridView.Columns[coluna].Width = 30;
+                dataGridView.Columns[coluna].Width = 35;               
                 //dataGridView1.Columns[coluna].Visible = false;
             }
 
@@ -63,12 +63,12 @@ namespace GetRoadRunner.Controllers
                         case Pecas.Papaleguas:
                             //((DataGridViewImageCell)dataGridView1.Rows[row].Cells[c]).Value = Resources.Papaleguas as Bitmap;
                             dataGridView.Rows[row].Cells[c].Value = "P";
-                            dataGridView.Rows[row].Cells[c].Style.BackColor = Color.DarkRed;
+                            dataGridView.Rows[row].Cells[c].Style.BackColor = Color.MediumSlateBlue;
                             break;
                         case Pecas.Coyote:
                             //((DataGridViewImageCell)dataGridView1.Rows[row].Cells[c]).Value = Resources.Coiote as Bitmap;
                             dataGridView.Rows[row].Cells[c].Value = "C";
-                            dataGridView.Rows[row].Cells[c].Style.BackColor = Color.DarkSeaGreen;
+                            dataGridView.Rows[row].Cells[c].Style.BackColor = Color.Sienna;
                             break;
                     }
 

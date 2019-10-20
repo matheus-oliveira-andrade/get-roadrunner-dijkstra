@@ -1,5 +1,7 @@
 ﻿using GetRoadRunner.Models.Graph;
+using GetRoadRunner.Views;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace GetRoadRunner
@@ -31,6 +33,8 @@ namespace GetRoadRunner
         {
             try
             {
+                richTxtBReport.AppendText("\nGerando o tabuleiro...");
+
                 matrizPosicoes = generate.GenerateBoard();
                 utils.MostrarTabuleiro(matrizPosicoes, dataGridView1);
 
@@ -46,11 +50,16 @@ namespace GetRoadRunner
         {
             try
             {
+                richTxtBReport.AppendText("\nProcurando o menor caminho até o papaléguas...");
                 var adjacencyList = generate.BuildGraph(matrizPosicoes);
 
                 var caminho = solve.Solver(adjacencyList);
 
                 if (caminho == null) { MessageBox.Show("Tente novamente, caminho não gerado!", "Imprevistos!"); }
+                else
+                {
+                    richTxtBReport.AppendText("\nEncontrei um caminho...");
+                }
             }
             catch (Exception ex)
             {
@@ -60,6 +69,10 @@ namespace GetRoadRunner
 
         private void btnResetar_Click(object sender, EventArgs e)
         {
+            richTxtBReport.AppendText("\nRecomeçando em 3... 2... 1...");
+
+            Thread.Sleep(3000);
+
             Application.Restart();
         }
 
@@ -70,6 +83,14 @@ namespace GetRoadRunner
 
             richTxtBReport.AppendText("Bem Vindo!!");
 
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmSobre();
+            frm.StartPosition = FormStartPosition.CenterScreen;            
+
+            frm.ShowDialog();
         }
     }
 }
