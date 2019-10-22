@@ -1,4 +1,5 @@
 ﻿using GetRoadRunner.Models.Graph;
+using System;
 using System.Collections.Generic;
 
 namespace GetRoadRunner.Models.Solver
@@ -7,11 +8,17 @@ namespace GetRoadRunner.Models.Solver
     {
         public Vertice Caminho { get; set; }
 
-        public void Solver(List<LinkedList<Vertice>> listAdjacency)
+        public Vertice Cacador { get; set; }
+        public Vertice Caca { get; set; }
+
+        public bool Solver(List<LinkedList<Vertice>> listAdjacency)
         {
             Vertice menorEstimativa;
 
             SetInitial(listAdjacency);
+
+            // Não foi gerado o caminho
+            if (!ValidaPossibilidade(listAdjacency)) { return false; }
 
             while (ExisteAbertos(listAdjacency))
             {
@@ -20,6 +27,47 @@ namespace GetRoadRunner.Models.Solver
 
                 AtualizarEstimativa(listAdjacency, menorEstimativa);
             }
+
+            // Foi gerado o caminho
+            return true;
+        }
+
+        private bool ValidaPossibilidade(List<LinkedList<Vertice>> listaAdjacencia)
+        {
+            var coiote = listaAdjacencia[Posicao.Calcula(Cacador.Linha, Cacador.Coluna, Cacador.NumeroColunas)];
+            var papaleguas = listaAdjacencia[Posicao.Calcula(Caca.Linha, Caca.Coluna, Caca.NumeroColunas)];
+
+            int obstCoiote = 0;
+            int obstPapaleguas = 0;
+
+            // Verifica vizinhos do coiote para saber se ele esta completamente fechado
+            foreach (var vizinho in coiote)
+                if (vizinho.Nome == Pecas.Obstacle) { obstCoiote++; }
+
+            // Verifica vizinhos do papaleguas para saber se ele esta completamente fechado
+            foreach (var vizinho in papaleguas)
+                if (vizinho.Nome == Pecas.Obstacle) { obstPapaleguas++; }
+            
+            // Se for maior ou igual a 4 significa que esta fechado
+            if (obstPapaleguas >= 4 || obstCoiote >= 4) { return false; }
+
+            return true;
+        }
+
+        public List<Vertice> GetCaminho()
+        {
+            var lista = new List<Vertice>();
+
+            var verticeCaminho = Caca;
+
+            while (verticeCaminho != null)
+            {
+                lista.Add(verticeCaminho);
+
+                verticeCaminho = verticeCaminho.Predecessor;
+            }
+
+            return lista;
         }
 
         private void SetInitial(List<LinkedList<Vertice>> listAdjacency)
@@ -31,11 +79,18 @@ namespace GetRoadRunner.Models.Solver
                 {
                     vertice.Predecessor = null;
 
-                    if (vertice.Nome == 0)
+                    if (vertice.Nome == Pecas.Coyote)
                     {
                         vertice.Estimativa = 0;
+
+                        Cacador = vertice;
                     }
                     else { vertice.Estimativa = int.MaxValue / 2; }
+
+                    if (vertice.Nome == Pecas.Papaleguas)
+                    {
+                        Caca = vertice;
+                    }
                 }
             }
         }
@@ -109,6 +164,5 @@ namespace GetRoadRunner.Models.Solver
 
             }
         }
-
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using GetRoadRunner.Models.Graph;
+﻿using GetRoadRunner.Models.Graph;
 using System.Collections.Generic;
 
 namespace GetRoadRunner.Controllers
@@ -15,14 +14,14 @@ namespace GetRoadRunner.Controllers
 
 
         public List<Vertice> Solver(List<LinkedList<Vertice>> listAdjacency)
-        {            
-            solver.Solver(listAdjacency);
+        {
+            // Se retornou false é porque não foi possível resolver o caminho
+            if (!solver.Solver(listAdjacency))
+            {
+                return null;
+            }
 
-            var listaCaminho = new List<Vertice>();
-
-            //solver.GetCaminho(solver.VerticeFinal, listaCaminho);
-
-            return listaCaminho;
+            return solver.GetCaminho();
         }
     }
 }

@@ -1,11 +1,7 @@
 ﻿using GetRoadRunner.Models;
 using GetRoadRunner.Models.Graph;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GetRoadRunner.Controllers
@@ -77,5 +73,12 @@ namespace GetRoadRunner.Controllers
             }
         }
 
+        public void MostraCaminho(List<Vertice> listaCaminho, DataGridView dataGridView)
+        {
+            foreach (var verticeCaminho in listaCaminho)
+            {
+                dataGridView.Rows[verticeCaminho.Linha].Cells[verticeCaminho.Coluna].Style.BackColor = Color.Pink;
+            }
+        }
     }
 }
