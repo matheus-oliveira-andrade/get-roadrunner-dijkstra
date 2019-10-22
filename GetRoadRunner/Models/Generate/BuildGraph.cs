@@ -6,31 +6,22 @@ namespace GetRoadRunner.Models
 {
     public class BuildGraph
     {
+        /// <summary>
+        /// Matriz de vértices
+        /// </summary>
         private Vertice[,] Matrix { get; set; }
-        private int[,] MatrizControl { get; set; }
+
         private List<LinkedList<Vertice>> AdjacencyList { get; set; }
 
         public BuildGraph(Vertice[,] matrix)
         {
-
             this.Matrix = matrix;
-            this.MatrizControl = new int[matrix.GetLength(0), matrix.GetLength(1)];
-            construirMatrizValorada();
         }
 
-        private void construirMatrizValorada()
-        {
-            var rand = new Random();
-
-            for (int linha = 0; linha < Matrix.GetLength(0); linha++)
-            {
-                for (int coluna = 0; coluna < Matrix.GetLength(1); coluna++)
-                {
-                    MatrizControl[linha, coluna] = rand.Next(1, 16);
-                }
-            }
-        }
-
+        /// <summary>
+        /// Gera a lista de adjacência usando a matriz de vértices criada anteriormente
+        /// </summary>
+        /// <returns></returns>
         public List<LinkedList<Vertice>> ToListAdjacency()
         {
             AdjacencyList = new List<LinkedList<Vertice>>(Matrix.GetLength(0) * Matrix.GetLength(1));
@@ -103,7 +94,7 @@ namespace GetRoadRunner.Models
                         }
                     }
 
-                    int posicao = CalculaPosicao(linha, coluna, Matrix.GetLength(1));
+                    int posicao = Posicao.Calcula(linha, coluna, Matrix.GetLength(1));
 
                     AdjacencyList.Insert(posicao, lnkdPosicao);
                 }
@@ -112,6 +103,10 @@ namespace GetRoadRunner.Models
             return AdjacencyList;
         }
 
+        /// <summary>
+        /// Verifica se o movimento a ser realizado é possível
+        /// </summary>        
+        /// <returns>true é possível, false não é possível</returns>
         private bool IsPossible(int linha, int coluna)
         {
             if (linha < 0 || linha > Matrix.GetLength(1) - 1)
@@ -126,6 +121,11 @@ namespace GetRoadRunner.Models
             return true;
         }
 
+        /// <summary>
+        /// Verifica se o vértice já existe na lista de adjacência
+        /// </summary>
+        /// <param name="procurado">Vertice a verificar</param>
+        /// <returns>Retorna o vértice se existir</returns>
         private Vertice ExistInListAdjacency(Vertice procurado)
         {
             foreach (LinkedList<Vertice> lnkdList in this.AdjacencyList)
@@ -142,12 +142,10 @@ namespace GetRoadRunner.Models
             return null;
         }
 
-        private int CalculaPosicao(int linha, int coluna, int totalColunas)
-        {
-            // linha index * numero de colunas + coluna index
-            return linha * totalColunas + coluna;
-        }
-
+        /// <summary>
+        /// Verifica se contain o vertice na lista de adjacência
+        /// </summary>
+        /// <returns>Retorna o vertice se já ouver na lista</returns>
         private Vertice ContainsVertice(int linha, int coluna, int totalColunas, Vertice procurado)
         {
             if (AdjacencyList[linha * totalColunas + coluna] == null)
@@ -165,6 +163,10 @@ namespace GetRoadRunner.Models
 
             return null;
         }
+
+        /// <summary>
+        /// Inicializa lista de adjacência
+        /// </summary>
         private void InitializeAdjacencyList()
         {
             for (int i = 0; i < AdjacencyList.Capacity; i++)

@@ -5,9 +5,20 @@ namespace GetRoadRunner.Models
 {
     class GeneratorBoard
     {        
+        /// <summary>
+        /// Valor minímo que pode ser gerado a matriz
+        /// </summary>
         private const int ValueMin = 4;
+
+        /// <summary>
+        /// Valor maximo que pode ser gerado a matriz
+        /// </summary>
         private const int ValueMax = 10;
 
+        /// <summary>
+        /// Gera a matriz de vértices
+        /// </summary>
+        /// <returns></returns>
         public Vertice[,] Generate()
         {
             var r = new Random();

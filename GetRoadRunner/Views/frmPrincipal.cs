@@ -14,7 +14,6 @@ namespace GetRoadRunner
 
         private Vertice[,] matrizPosicoes;
 
-
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -108,7 +107,7 @@ namespace GetRoadRunner
         private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new FrmSobre();
-            frm.StartPosition = FormStartPosition.CenterScreen;            
+            frm.StartPosition = FormStartPosition.CenterScreen;
 
             //Mostra o form sobre
             frm.ShowDialog();
