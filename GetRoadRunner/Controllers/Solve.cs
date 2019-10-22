@@ -20,7 +20,7 @@ namespace GetRoadRunner.Controllers
 
             var listaCaminho = new List<Vertice>();
 
-            solver.GetCaminho(solver.VerticeFinal, listaCaminho);
+            //solver.GetCaminho(solver.VerticeFinal, listaCaminho);
 
             return listaCaminho;
         }

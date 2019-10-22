@@ -6,7 +6,6 @@ namespace GetRoadRunner.Models.Solver
     public class Dijkstra
     {
         public Vertice Caminho { get; set; }
-        public Vertice VerticeFinal { get; set; }
 
         public void Solver(List<LinkedList<Vertice>> listAdjacency)
         {
@@ -21,23 +20,20 @@ namespace GetRoadRunner.Models.Solver
 
                 AtualizarEstimativa(listAdjacency, menorEstimativa);
             }
-
         }
 
         private void SetInitial(List<LinkedList<Vertice>> listAdjacency)
         {
             foreach (var lnkdList in listAdjacency)
             {
+                if (lnkdList == null) { continue; }
                 foreach (var vertice in lnkdList)
                 {
                     vertice.Predecessor = null;
 
-                    if (vertice.Nome == Pecas.Coyote)
+                    if (vertice.Nome == 0)
                     {
                         vertice.Estimativa = 0;
-                    }else if(vertice.Nome == Pecas.Papaleguas)
-                    {
-                        VerticeFinal = vertice;
                     }
                     else { vertice.Estimativa = int.MaxValue / 2; }
                 }
@@ -48,6 +44,8 @@ namespace GetRoadRunner.Models.Solver
         {
             foreach (var lnkdList in listAdjacency)
             {
+                if (lnkdList == null) { continue; }
+
                 foreach (var vertice in lnkdList)
                 {
                     if (vertice.Aberto == true)
@@ -66,6 +64,8 @@ namespace GetRoadRunner.Models.Solver
 
             foreach (var lnkdList in listAdjacency)
             {
+                if (lnkdList == null) { continue; }
+
                 foreach (var vertice in lnkdList)
                 {
                     if (vertice.Estimativa <= verticeMenorEstimativa.Estimativa && vertice.Aberto)
@@ -110,15 +110,5 @@ namespace GetRoadRunner.Models.Solver
             }
         }
 
-        public List<Vertice> GetCaminho(Vertice verticeFinal, List<Vertice> listaCaminho)
-        {
-            listaCaminho.Add(verticeFinal);
-
-            if (verticeFinal.Predecessor == null) { return listaCaminho ; }
-
-            GetCaminho(verticeFinal.Predecessor, listaCaminho);
-
-            return listaCaminho;
-        }
     }
 }
