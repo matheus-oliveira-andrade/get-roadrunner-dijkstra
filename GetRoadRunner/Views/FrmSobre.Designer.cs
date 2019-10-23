@@ -42,7 +42,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(469, 133);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Integrantes:\r\n";
+            this.label1.Text = "Integrantes:\r\n\r\nClyssia Melo\r\nMatheus de Oliveira de Andrade";
             // 
             // panel1
             // 

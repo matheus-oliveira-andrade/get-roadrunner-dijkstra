@@ -18,9 +18,8 @@ namespace GetRoadRunner.Controllers
 
             for (int coluna = 0; coluna < numColunas; coluna++)
             {
-                dataGridView.Columns.Add($"col{coluna}", (coluna  + 1).ToString());
-                dataGridView.Columns[coluna].Width = 35;               
-                //dataGridView1.Columns[coluna].Visible = false;
+                dataGridView.Columns.Add($"col{coluna}", (coluna + 1).ToString());
+                dataGridView.Columns[coluna].Width = 35;
             }
 
             dataGridView.Rows.Add(numLinhas - 1);
@@ -45,7 +44,7 @@ namespace GetRoadRunner.Controllers
                             break;
 
                         case Pecas.Obstacle:
-                            dataGridView.Rows[row].Cells[c].Style.BackColor = Color.Black;
+                            dataGridView.Rows[row].Cells[c].Style.BackColor = Color.Gray;
                             break;
 
                         case Pecas.Sand:
@@ -67,7 +66,6 @@ namespace GetRoadRunner.Controllers
                             dataGridView.Rows[row].Cells[c].Style.BackColor = Color.Sienna;
                             break;
                     }
-
                 }
                 count++;
             }
@@ -76,9 +74,7 @@ namespace GetRoadRunner.Controllers
         public void MostraCaminho(List<Vertice> listaCaminho, DataGridView dataGridView)
         {
             foreach (var verticeCaminho in listaCaminho)
-            {
-                dataGridView.Rows[verticeCaminho.Linha].Cells[verticeCaminho.Coluna].Style.BackColor = Color.Pink;
-            }
+                dataGridView.Rows[verticeCaminho.Linha].Cells[verticeCaminho.Coluna].Style.BackColor = Color.LightPink;
         }
     }
 }

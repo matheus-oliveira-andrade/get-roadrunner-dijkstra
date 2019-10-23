@@ -23,12 +23,12 @@ namespace GetRoadRunner
             utils = new Controllers.Utils();
         }
 
-        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void btnGerar_Click(object sender, EventArgs e)
+        private void BtnGerar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace GetRoadRunner
                 utils.MostrarTabuleiro(matrizPosicoes, dataGridView1);
 
                 //Ativa o botão para pode achar o caminho minímo
-                btnResolver.Enabled = true;
+                btnResolver.Enabled = true;                
             }
             catch (Exception ex)
             {
@@ -49,7 +49,7 @@ namespace GetRoadRunner
             }
         }
 
-        private void btnResolver_Click(object sender, EventArgs e)
+        private void BtnResolver_Click(object sender, EventArgs e)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace GetRoadRunner
                     richTxtBReport.AppendText("\nGerando novo tabuleiro, um dos personagem esta cercado de obstaculos!..");
 
                     //Gerando novo tabuleiro, pois o gerado estava com um dos personagens bloqueados
-                    btnGerar_Click(null, new EventArgs());
+                    BtnGerar_Click(null, new EventArgs());
                 }
                 else
                 {
@@ -87,7 +87,7 @@ namespace GetRoadRunner
             }
         }
 
-        private void btnResetar_Click(object sender, EventArgs e)
+        private void BtnResetar_Click(object sender, EventArgs e)
         {
             richTxtBReport.AppendText("\nRecomeçando em 3... 2... 1...");
 
@@ -104,7 +104,7 @@ namespace GetRoadRunner
             richTxtBReport.AppendText("Bem Vindo!!");
         }
 
-        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SobreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new FrmSobre();
             frm.StartPosition = FormStartPosition.CenterScreen;

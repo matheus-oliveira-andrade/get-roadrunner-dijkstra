@@ -55,7 +55,7 @@ namespace GetRoadRunner.Models
                     }
                     if (valor == Pecas.Obstacle)
                     {
-                        matriz[linha, coluna] = new Vertice(valor, 2, linha, coluna, lenght, ".");
+                        matriz[linha, coluna] = new Vertice(valor, 2, linha, coluna, lenght, "*");
                         continue;
                     }
                 }
